@@ -1,6 +1,6 @@
 # Zosimos
 
-Analyzes your textual data with AlchemyAPI.
+Analyzes your textual data with AlchemyAPI. Name based on [Zosimos of Panopolis](https://en.wikipedia.org/wiki/Zosimos_of_Panopolis).
 
 ## Installation
 
