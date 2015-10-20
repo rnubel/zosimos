@@ -18,8 +18,10 @@ module Zosimos
       text = row[column_to_process]
       result = alchemy_call(method, text: text, language: default_language)
 
-      output_row << result['type']
-      output_row << result['score']
+      if result
+        output_row << result['type']
+        output_row << result['score']
+      end
 
       output << output_row
     end
