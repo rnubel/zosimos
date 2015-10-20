@@ -5,15 +5,18 @@ require 'alchemy_api'
 module Zosimos
   extend self
 
-  def process(input, method: :sentiment_analysis)
+  def process(input, method: :sentiment_analysis, text_column: nil)
     output = []
     headers = input.first
+
+    column_to_process = headers.index(text_column) || (headers.size - 1)
 
     output << headers.dup + [ 'sentiment', 'score' ]
 
     input.drop(1).each do |row|
       output_row = row.dup
-      result = alchemy_call(method, text: row.last, language: default_language)
+      text = row[column_to_process]
+      result = alchemy_call(method, text: text, language: default_language)
 
       output_row << result['type']
       output_row << result['score']
